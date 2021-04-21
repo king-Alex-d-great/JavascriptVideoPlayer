@@ -8,8 +8,8 @@ let video = document.querySelector(".viewer");
 let fullScreen = document.querySelector(".full-screen");
 let player = document.querySelector(".player");
 
-console.dir(video);
-//adding all functions
+
+//FUNCTIONS
 
 //play and pause function
 function handlePlay() {
