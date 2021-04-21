@@ -50,7 +50,10 @@ function handleProgess() {
   progressBar.style.flexBasis = `${movement}%`;
 }
 
-
+function moveVideo(e) {
+  let movement = (e.offsetX / this.offsetWidth) * +video.duration;
+  video.currentTime = +movement;
+}
 
 //adding eventlisteners
 plasey.addEventListener("click", handlePlay);
@@ -59,4 +62,4 @@ range.forEach((range) => range.addEventListener("change", handleSliders));
 skipper.forEach((skip) => skip.addEventListener("click", handleSkipper));
 fullScreen.addEventListener("click", handleScreen);
 video.addEventListener("timeupdate", handleProgess);
-
+progress.addEventListener("click", moveVideo);
