@@ -23,8 +23,15 @@ console.dir(video)
     //video[toggle]();
  }
 
+ //volume and speed function
+ function handleSliders () {
+   video[this.name] = this.value;
+ }
+
+ 
 
 
 //adding eventlisteners
 plasey.addEventListener("click", handlePlay);
 video.addEventListener("click", handlePlay);
+range.forEach(range => range.addEventListener("change", handleSliders))
