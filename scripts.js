@@ -22,7 +22,7 @@ function handlePlay() {
   video.pause();
 
   //(video.paused) ? plasey.innerHTML = "⏸" && video.play() :  plasey.innerHTML = "▶" && video.pause();
-//or
+  //or
   //let toggle = video.paused ? "play" : "pause"
   //video[toggle]();
 }
@@ -44,9 +44,19 @@ function handleScreen() {
     : (player.width = window.innerWidth);
 }
 
+//handle progress
+function handleProgess() {
+  let movement = (this.currentTime / this.duration) * 100;
+  progressBar.style.flexBasis = `${movement}%`;
+}
+
+
+
 //adding eventlisteners
 plasey.addEventListener("click", handlePlay);
 video.addEventListener("click", handlePlay);
 range.forEach((range) => range.addEventListener("change", handleSliders));
 skipper.forEach((skip) => skip.addEventListener("click", handleSkipper));
 fullScreen.addEventListener("click", handleScreen);
+video.addEventListener("timeupdate", handleProgess);
+
