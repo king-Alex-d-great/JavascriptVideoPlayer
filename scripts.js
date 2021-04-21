@@ -50,16 +50,25 @@ function handleProgess() {
   progressBar.style.flexBasis = `${movement}%`;
 }
 
+//move progress with mouse scrub
 function moveVideo(e) {
   let movement = (e.offsetX / this.offsetWidth) * +video.duration;
-  video.currentTime = +movement;
+  video.currentTime = movement;
 }
 
-//adding eventlisteners
+//ADDING EVENTLISTENERS
+let down = false;
 plasey.addEventListener("click", handlePlay);
+
 video.addEventListener("click", handlePlay);
+video.addEventListener("timeupdate", handleProgess);
+
+fullScreen.addEventListener("click", handleScreen);
 range.forEach((range) => range.addEventListener("change", handleSliders));
 skipper.forEach((skip) => skip.addEventListener("click", handleSkipper));
-fullScreen.addEventListener("click", handleScreen);
-video.addEventListener("timeupdate", handleProgess);
+
 progress.addEventListener("click", moveVideo);
+progress.addEventListener("mousemove", (e) => down ? moveVideo(e) : (down = false));
+progress.addEventListener("mousedown", () => (down = true));
+progress.addEventListener("mouseup", () => (down = false));
+progress.addEventListener("mouseout", () => (down = false));
