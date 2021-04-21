@@ -28,10 +28,15 @@ console.dir(video)
    video[this.name] = this.value;
  }
 
- 
+ //skipping functions
+ function handleSkipper () {
+video.currentTime += +(this.dataset.skip);
+ }
+
 
 
 //adding eventlisteners
 plasey.addEventListener("click", handlePlay);
 video.addEventListener("click", handlePlay);
 range.forEach(range => range.addEventListener("change", handleSliders))
+skipper.forEach(skip => skip.addEventListener("click", handleSkipper))
